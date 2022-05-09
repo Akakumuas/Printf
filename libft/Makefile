@@ -6,7 +6,7 @@
 #    By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 23:10:17 by khuynh            #+#    #+#              #
-#    Updated: 2022/05/09 02:00:50 by ctrinite         ###   ########.fr        #
+#    Updated: 2022/05/09 02:42:04 by ctrinite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,17 +47,15 @@ SRCS =  \
         ft_putendl_fd.c \
         ft_putnbr_fd.c  \
 	    ft_striteri.c   \
-
-# BONUS = \
-# 	    ft_lstmap.c		\
-# 	    ft_lstlast.c		\
-# 	    ft_lstnew.c		\
-# 	    ft_lstadd_back.c  \
-# 	    ft_lstadd_front.c	\
-# 	    ft_lstclear.c		\
-# 	    ft_lstdelone.c	\
-# 	    ft_lstiter.c		\
-# 	    ft_lstsize.c		\
+	    ft_lstmap.c		\
+	    ft_lstlast.c		\
+	    ft_lstnew.c		\
+	    ft_lstadd_back.c  \
+	    ft_lstadd_front.c	\
+	    ft_lstclear.c		\
+	    ft_lstdelone.c	\
+	    ft_lstiter.c		\
+	    ft_lstsize.c		\
 
 HEADERS = includes
 OBJS = ${SRCS:.c=.o}
@@ -92,11 +90,6 @@ ${NAME}: ${OBJS}
 	@echo "$(YELLOW)archiving object files... $(RESET)"
 	ar rcs ${NAME} ${OBJS}
 	@echo "$(GREEN)archiving done:$(BOLDWHITE) 100% $(RESET)"
-
-# bonus: ${BONUS_OBJS}
-# 	@echo "$(YELLOW)archiving bonus object files... $(RESET)"
-# 		ar rcs ${NAME} ${BONUS_OBJS}
-# 	@echo "$(GREEN)archiving done:$(BOLDWHITE) 100% $(RESET)"
 
 clean:
 	@echo "$(CYAN)cleaning... $(RESET)"

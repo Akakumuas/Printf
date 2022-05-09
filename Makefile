@@ -6,7 +6,7 @@
 #    By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 23:10:17 by khuynh            #+#    #+#              #
-#    Updated: 2022/05/09 01:59:05 by ctrinite         ###   ########.fr        #
+#    Updated: 2022/05/09 02:45:23 by ctrinite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME		= libftprintf.a
 INCLUDE		= includes/
 LIBFT		= libft
 SRC_DIR		= src/
-# OBJ_DIR		= obj/
+OBJ_DIR		= obj/
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -I
 RM			= rm -f
@@ -71,7 +71,4 @@ fclean:		clean
 re:			fclean all
 			@echo "$(GREEN)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
 
-norm:
-			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
-
-.PHONY:		all clean fclean re norm
+.PHONY:		all clean fclean re
