@@ -6,12 +6,12 @@
 /*   By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 02:13:12 by ctrinite          #+#    #+#             */
-/*   Updated: 2022/05/09 01:57:37 by ctrinite         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:04:30 by ctrinite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_num_len(unsigned int num)
 {

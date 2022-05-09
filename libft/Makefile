@@ -6,99 +6,100 @@
 #    By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 23:10:17 by khuynh            #+#    #+#              #
-#    Updated: 2022/05/09 02:42:04 by ctrinite         ###   ########.fr        #
+#    Updated: 2022/05/09 14:55:50 by ctrinite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-SRCS =  \
-	    ft_memset.c     \
-        ft_memmove.c    \
-        ft_memchr.c     \
-        ft_memcmp.c     \
-        ft_memcpy.c     \
-        ft_bzero.c      \
-        ft_atoi.c       \
-        ft_strlen.c     \
-        ft_strlcpy.c    \
-        ft_strlcat.c    \
-        ft_strchr.c     \
-        ft_strrchr.c    \
-        ft_strnstr.c    \
-        ft_strncmp.c    \
-        ft_atoi.c       \
-        ft_isalnum.c    \
-        ft_isdigit.c    \
-        ft_isalpha.c    \
-        ft_isascii.c    \
-        ft_isprint.c    \
-        ft_tolower.c    \
-        ft_toupper.c    \
-        ft_calloc.c     \
-        ft_strdup.c     \
-        ft_itoa.c       \
-        ft_substr.c     \
-        ft_strjoin.c    \
-        ft_strtrim.c    \
-        ft_split.c      \
-        ft_strmapi.c    \
-        ft_putchar_fd.c \
-        ft_putstr_fd.c  \
-        ft_putendl_fd.c \
-        ft_putnbr_fd.c  \
-	    ft_striteri.c   \
-	    ft_lstmap.c		\
-	    ft_lstlast.c		\
-	    ft_lstnew.c		\
-	    ft_lstadd_back.c  \
-	    ft_lstadd_front.c	\
-	    ft_lstclear.c		\
-	    ft_lstdelone.c	\
-	    ft_lstiter.c		\
-	    ft_lstsize.c		\
+#Standard
 
-HEADERS = includes
-OBJS = ${SRCS:.c=.o}
-BONUS_OBJS = ${BONUS:.c=.o}
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3
-RM = rm -f
-AR = ar rcs
+NAME		=	libft.a
+INCLUDES	=	../includes
+SRCS_DIR 	=	src/
+OBJS_DIR	=	obj/
+CC			=	gcc
+CFLAGS		=	-Wall -Werror -Wextra -I
+RM			=	rm -f
+AR			=	ar rcs
 
-# COLORS
-RESET=        \033[0m
-DARK=        \033[1;32m
-RED=        \033[31m
-GREEN=        \033[32m
-YELLOW=        \033[33m
-BLUE=        \033[34m
-MAGENTA=    \033[35m
-CYAN=        \033[36m
-WHITE=        \033[37m
-BOLDBLACK=    \033[1m\033[30m
-BOLDRED=    \033[1m\033[31m
-BOLDWHITE=    \033[1m\033[37m
+#Colors
 
-all: $(NAME)
+DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
 
-.c.o :
-	@echo "$(MAGENTA)compiling... $(RESET)"
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${HEADERS}
+#Sources
 
-${NAME}: ${OBJS}
-	@echo "$(GREEN)compiling done:$(BOLDWHITE) 100% $(RESET)"
-	@echo "$(YELLOW)archiving object files... $(RESET)"
-	ar rcs ${NAME} ${OBJS}
-	@echo "$(GREEN)archiving done:$(BOLDWHITE) 100% $(RESET)"
+FTIS_DIR	=	ft_is/
+FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
+
+FTMEM_DIR	=	ft_mem/
+FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset
+
+FTPUT_DIR	=	ft_put/
+FTPUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
+
+FTTO_DIR	=	ft_to/
+FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper
+
+FTSTR_DIR	=	ft_str/
+FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
+				    ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
+				    ft_strnstr ft_strrchr ft_strtrim ft_substr
+
+FTLST_DIR	=	ft_lst/
+FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
+                    ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
+
+SRC_FILES+=$(addprefix $(FTIS_DIR),$(FTIS))
+SRC_FILES+=$(addprefix $(FTMEM_DIR),$(FTMEM))
+SRC_FILES+=$(addprefix $(FTPUT_DIR),$(FTPUT))
+SRC_FILES+=$(addprefix $(FTTO_DIR),$(FTTO))
+SRC_FILES+=$(addprefix $(FTSTR_DIR),$(FTSTR))
+SRC_FILES+=$(addprefix $(FTLST_DIR),$(FTLST))
+
+SRCS 		= 	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJS 		= 	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
+
+###
+
+OBJSF		=	.cache_exists
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			@$(AR) $(NAME) $(OBJS)
+			@ranlib $(NAME)
+			@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
+
+$(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJSF)
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJSF):
+			@mkdir -p $(OBJS_DIR)
+			@mkdir -p $(OBJS_DIR)$(FTIS_DIR)
+			@mkdir -p $(OBJS_DIR)$(FTMEM_DIR)
+			@mkdir -p $(OBJS_DIR)$(FTPUT_DIR)
+			@mkdir -p $(OBJS_DIR)$(FTTO_DIR)
+			@mkdir -p $(OBJS_DIR)$(FTSTR_DIR)
+			@mkdir -p $(OBJS_DIR)$(FTLST_DIR)
 
 clean:
-	@echo "$(CYAN)cleaning... $(RESET)"
-	rm -f ${OBJS} ${BONUS_OBJS}
-	@echo "$(GREEN)cleaning done:$(BOLDWHITE) 100% $(RESET)"
+			@$(RM) -rf $(OBJS_DIR)
+			@$(RM) -f $(OBJSF)
+			@echo "$(BLUE)libft objects files cleaned!$(DEF_COLOR)"
 
-fclean: clean
-	rm -fr ${NAME}
+fclean:		clean
+			@$(RM) -f $(NAME)
+			@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
 
-re: fclean all
+re:			fclean all
+			@echo "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
 
-.PHONY: all clean fclean re bonus
+.PHONY:		all clean fclean re

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 02:57:51 by ctrinite          #+#    #+#             */
-/*   Updated: 2022/05/09 01:42:50 by ctrinite         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:11:04 by ctrinite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
 # include <unistd.h>

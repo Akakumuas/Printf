@@ -6,12 +6,12 @@
 /*   By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 13:28:10 by ctrinite          #+#    #+#             */
-/*   Updated: 2022/05/09 01:57:35 by ctrinite         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:04:27 by ctrinite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "printf.h"
+#include "ft_printf.h"
 
 #include <stdint.h>
 

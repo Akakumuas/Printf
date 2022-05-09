@@ -6,13 +6,13 @@
 /*   By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:17:52 by ctrinite          #+#    #+#             */
-/*   Updated: 2022/05/09 01:57:32 by ctrinite         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:04:19 by ctrinite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
-#include "printf.h"
+#include "ft_printf.h"
 #include <stdint.h>
 
 int	ft_printchar(int c)

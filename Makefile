@@ -6,14 +6,14 @@
 #    By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 23:10:17 by khuynh            #+#    #+#              #
-#    Updated: 2022/05/09 02:45:23 by ctrinite         ###   ########.fr        #
+#    Updated: 2022/05/09 15:09:29 by ctrinite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Variables
 
 NAME		= libftprintf.a
-INCLUDE		= includes/
+INCLUDE		= includes
 LIBFT		= libft
 SRC_DIR		= src/
 OBJ_DIR		= obj/
@@ -40,9 +40,11 @@ SRC_FILES	=	ft_printf ft_printf_utils ft_putptr ft_putunsigned ft_puthex \
 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(SRC_DIR), $(addsuffix .o, $(SRC_FILES)))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 ###
+
+OBJF		=	.cache_exists
 
 all:		$(NAME)
 
@@ -53,12 +55,15 @@ $(NAME):	$(OBJ)
 			@$(AR) $(NAME) $(OBJ)
 			@echo "$(GREEN)ft_printf compiled!$(DEF_COLOR)"
 
-%.o: %.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
+$(OBJF):
+			@mkdir -p $(OBJ_DIR)
+
 clean:
-			@$(RM) -rf $(OBJ)
+			@$(RM) -rf $(OBJ_DIR)
 			@make clean -C $(LIBFT)
 			@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
 
@@ -71,4 +76,4 @@ fclean:		clean
 re:			fclean all
 			@echo "$(GREEN)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re 
