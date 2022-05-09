@@ -6,21 +6,21 @@
 /*   By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 23:12:02 by ctrinite          #+#    #+#             */
-/*   Updated: 2022/05/07 04:46:47 by ctrinite         ###   ########.fr       */
+/*   Updated: 2022/05/09 01:57:38 by ctrinite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "printf.h"
 
-int	ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		write(1, str[i], 1);
+		write(1, &str[i], 1);
 		i++;
 	}
 }

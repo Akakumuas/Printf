@@ -6,7 +6,7 @@
 /*   By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 13:02:21 by ctrinite          #+#    #+#             */
-/*   Updated: 2022/05/07 04:45:21 by ctrinite         ###   ########.fr       */
+/*   Updated: 2022/05/09 01:57:36 by ctrinite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	hex_len(unsigned int num)
 	int	len;
 
 	len = 0;
-	if (num != 0)
+	while (num != 0)
 	{
 		len++;
 		num = num / 16;

@@ -6,12 +6,14 @@
 /*   By: ctrinite <ctrinite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:17:52 by ctrinite          #+#    #+#             */
-/*   Updated: 2022/05/07 04:56:59 by ctrinite         ###   ########.fr       */
+/*   Updated: 2022/05/09 01:57:32 by ctrinite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include <stdarg.h>
+#include "libft.h"
 #include "printf.h"
+#include <stdint.h>
 
 int	ft_printchar(int c)
 {
@@ -29,13 +31,13 @@ int	ft_format(va_list args, const char format)
 	if (format == 's')
 		pl += ft_printstr(va_arg(args, char *));
 	if (format == 'p')
-		pl += ft_putptr(va_arg(args, unsigned long long));
+		pl += ft_ptr((uintptr_t)va_arg(args, void *));
 	if (format == 'd' || format == 'i')
 		pl += ft_printnbr(va_arg(args, int));
 	if (format == 'u')
 		pl += ft_putunsigned(va_arg(args, unsigned int));
 	if (format == 'x' || format == 'X')
-		pl += ft_puthex(va_arg(args, unsigned int), format);
+		pl += ft_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
 		pl += ft_printpercent();
 	return (pl);
